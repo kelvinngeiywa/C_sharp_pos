@@ -1,0 +1,60 @@
+@rootURL = https://localhost:7206
+@adminToken=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VsdmluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIwMWExOWJjNy0zMzIxLTc0M2ItODFhYi04ZGRmMDQ4YTc3NDQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc5MzY1MTkwNCwiaXNzIjoiYXV0aGVudGljYXRpb24iLCJhdWQiOiJhdXRoZW50aWNhdGlvblVzZXJzIn0.M8fbHGEJKwsx-0YHwttXwdOxdgcxn5eDY1qyVONqpwdHMYfT1mp3PMj9nuNjBSUhenRpbGBGao7vy5Pv0hx0qg
+
+GET {{rootURL}}/api/Users
+Accept: application/json
+Authorization: Bearer {{adminToken}}
+
+###
+
+GET {{rootURL}}/api/Users/01a19bc7-3321-743b-81ab-8ddf048a7744
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VsdmluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIwMWExOWQ5Ny04MmNhLTdmODEtOTE5My0xYTM4MzNjNzRjOWUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNzkzNjQ4NzI3LCJpc3MiOiJhdXRoZW50aWNhdGlvbiIsImF1ZCI6ImF1dGhlbnRpY2F0aW9uVXNlcnMifQ.h8rYNqJXt6Eo7waUSoQyEe5GwUP9pG6QYYF5527m4oiabxmpbbhyADXrKqf_XVruvKh7wUZeIrIyrcwzNjurZg
+
+###
+
+POST {{rootURL}}/api/Auth/register
+Content-Type: application/json
+
+{
+  "name":"Kelvin",
+  "email":"kelvin3@gmail.com",
+  "password":"Lenovo@112",
+  "dob":"2000-02-11"
+}
+
+###
+POST {{rootURL}}/api/Auth/login
+Content-Type: application/json
+
+{
+  "email":"kelvinadmin@gmail.com",
+  "password":"Lenovo@112"
+}
+
+###
+
+PUT {{rootURL}}/api/Users/01a19bc7-3321-743b-81ab-8ddf048a7744
+Content-Type: application/json
+
+{
+  "name":"Kelvin",
+  "email":"kelvinadmin@gmail.com",
+  "password":"Lenovo@112",
+  "role":"Admin"
+}
+
+###
+
+POST {{rootURL}}/api/Auth/refresh-token
+Content-Type: application/json
+
+{
+  "id": "01a19d97-82ca-7f81-9193-1a3833c74c9e",
+  "refreshtoken": "LCtAv3ZdPc16ShbXdxgAh5tFdhICjQos+WU5TzQDJNQ="
+}
+
+###
+DELETE {{rootURL}}/api/Users/01a19be2-7399-7539-a1a7-145d5238af82
+Content-Type: application/json
+Authorization:Bearer {{adminToken}}
