@@ -72,9 +72,9 @@ namespace my_pos.Controllers
         }
         [Authorize]
         [HttpPut("change-password/{id}")]
-        public async Task<ActionResult<ResponseDTO>> UpdatePasswordAsync(Guid id,string password)
+        public async Task<ActionResult<ResponseDTO>> UpdatePasswordAsync(Guid id, ChangePasswordDTO changePasswordDTO)
         {
-            var results = await userServices.ChangePasswordAsync(id,password);
+            var results = await userServices.ChangePasswordAsync(id,changePasswordDTO);
             if (results is null)
             {
                 response.Success = false;
@@ -86,6 +86,26 @@ namespace my_pos.Controllers
             response.Message = "Password changed successful!!";
             response.Data = results;
 
+            return Ok(response);
+        }
+
+        [Authorize(Roles ="Admin")]
+        [HttpPut("assign-role/{id}")]
+        public async Task<ActionResult<ResponseDTO>> AssignRole(Guid id,ChangeRoleDTO changeRoleDTO)
+        {
+            var results= await userServices.AssignRoleAsync(id,changeRoleDTO);
+
+            if (results is null)
+            {
+                response.Success = false;
+                response.Message = "User not found";
+                response.Data=results;
+                return BadRequest(response);
+            }
+
+            response.Success = true;
+            response.Message = "User assigned new role";
+            response.Data = results;
             return Ok(response);
         }
 

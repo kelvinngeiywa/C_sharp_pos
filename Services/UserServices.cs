@@ -186,7 +186,7 @@ namespace my_pos.Services
             return "";
         }
 
-        public async Task<string> ChangePasswordAsync(Guid userId, string newPassword)
+        public async Task<string> ChangePasswordAsync(Guid userId, ChangePasswordDTO newPassword)
         {
             var user = await dbContext.users.FindAsync(userId);
             if (user is null)
@@ -194,12 +194,24 @@ namespace my_pos.Services
                 return null;
             }
 
-            var updatedPassword= new PasswordHasher<UserModel>().HashPassword(user, newPassword);
+            var updatedPassword= new PasswordHasher<UserModel>().HashPassword(user, newPassword.Password);
             user.Password = updatedPassword;
 
             await dbContext.SaveChangesAsync();
             return "";
 
+        }
+
+        public async Task<string> AssignRoleAsync(Guid id, ChangeRoleDTO newRole)
+        {
+            var user = await dbContext.users.FindAsync(id);
+            if (user is null)
+            {
+                return null;
+            }
+            user.Role = newRole.Role;
+            await dbContext.SaveChangesAsync();
+            return "";
         }
     }
 }

@@ -14,6 +14,7 @@ namespace my_pos.Services.IServices
         Task<LoginResponseDTO> RefreshTokensAsync(RefreshTokenRequestDTO tokenRequestDTO);
         Task<string> DeleteUserAsync(UserModel userModel);
 
-        Task<string> ChangePasswordAsync(Guid userId, string newPassword);
+        Task<string> ChangePasswordAsync(Guid userId, ChangePasswordDTO newPassword);
+        Task<string> AssignRoleAsync(Guid id, ChangeRoleDTO newRole);
     }
 }

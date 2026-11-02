@@ -15,7 +15,6 @@ namespace my_pos.Models.DTOs
     ErrorMessage = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.")]
         public string Password { get; set; }
         public DateOnly DOB { get; set; }
-        public DateTime RegisteredDate { get; set; }
         public string Role { get; set; } = "User";
     }
 }

@@ -182,6 +182,37 @@
   },
   {
     "ContainingType": "my_pos.Controllers.UsersController",
+    "Method": "AssignRole",
+    "RelativePath": "api/Users/assign-role/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "changeRoleDTO",
+        "Type": "my_pos.Models.DTOs.ChangeRoleDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "my_pos.Models.DTOs.ResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "my_pos.Controllers.UsersController",
     "Method": "UpdatePasswordAsync",
     "RelativePath": "api/Users/change-password/{id}",
     "HttpMethod": "PUT",
@@ -194,9 +225,9 @@
         "IsRequired": true
       },
       {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "changePasswordDTO",
+        "Type": "my_pos.Models.DTOs.ChangePasswordDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
