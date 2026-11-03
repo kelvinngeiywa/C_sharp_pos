@@ -28,8 +28,8 @@ POST {{rootURL}}/api/Auth/login
 Content-Type: application/json
 
 {
-  "email":"kelvinadmin@gmail.com",
-  "password":"Lenovo@112"
+  "email":"kelvin1@gmail.com",
+  "password":"Password@123"
 }
 
 ###
@@ -78,3 +78,30 @@ Content-Type: application/json
 DELETE {{rootURL}}/api/Users/01a19be2-7399-7539-a1a7-145d5238af82
 Content-Type: application/json
 Authorization:Bearer {{adminToken}}
+
+
+###products
+
+###
+
+POST {{rootURL}}/api/Product
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2VsdmluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIwMWExOWM0YS0xODNlLTdkZGUtODA2MC03NmE5ZTc3YjQ5ZDEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc5MzcxNzgwNCwiaXNzIjoiYXV0aGVudGljYXRpb24iLCJhdWQiOiJhdXRoZW50aWNhdGlvblVzZXJzIn0.-sndyecoOe6XhyOH1OXKDvmFkCjttNHo5BF8M36VV8zQGzqP3dQRh0cXktpF5eD_Bk40VeJZaPPxibWRg3MUkA
+
+{
+  "name":"Earphone1",
+  "price":500,
+  "Count":20
+}
+
+###
+GET {{rootURL}}/api/Product
+Accept: application/json
+
+###
+GET {{rootURL}}/api/Product/01a1a1a7-721f-7a12-b95c-93d2bc2990d7
+Accept: application/json
+
+###
+DELETE {{rootURL}}/api/Product/01a1a1a7-721f-7a12-b95c-93d2bc2990d7
+Accept: application/json

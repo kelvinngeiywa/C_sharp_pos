@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "etwHd2EHlAg=",
+  "dgSpecHash": "2tvmkYU6UoQ=",
   "success": true,
   "projectFilePath": "D:\\projects\\dotnet\\my_pos\\my_pos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\neo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\neo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.14\\microsoft.aspnetcore.authentication.jwtbearer.10.0.14.nupkg.sha512",
-    "C:\\Users\\neo\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.3.13\\microsoft.aspnetcore.identity.2.3.13.nupkg.sha512",
     "C:\\Users\\neo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
     "C:\\Users\\neo\\.nuget\\packages\\microsoft.bcl.cryptography\\10.0.2\\microsoft.bcl.cryptography.10.0.2.nupkg.sha512",
     "C:\\Users\\neo\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
@@ -45,18 +44,5 @@
     "C:\\Users\\neo\\.nuget\\packages\\system.composition.typedparts\\9.0.0\\system.composition.typedparts.9.0.0.nupkg.sha512",
     "C:\\Users\\neo\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.23.0\\system.identitymodel.tokens.jwt.8.23.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1510",
-      "level": "Warning",
-      "message": "PackageReference Microsoft.AspNetCore.Identity will not be pruned. This package is automatically available and does not need to be referenced explicitly. Remove the PackageReference item.",
-      "projectPath": "D:\\projects\\dotnet\\my_pos\\my_pos.csproj",
-      "warningLevel": 1,
-      "filePath": "D:\\projects\\dotnet\\my_pos\\my_pos.csproj",
-      "libraryId": "Microsoft.AspNetCore.Identity",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    }
-  ]
+  "logs": []
 }

@@ -24,6 +24,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<IUser, UserServices>();
+builder.Services.AddScoped<IProduct, ProductServices>();
 
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 {
@@ -58,6 +59,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateActor=true
     };
 });
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
