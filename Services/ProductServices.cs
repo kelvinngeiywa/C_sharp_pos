@@ -7,17 +7,19 @@ using System.Security.Claims;
 
 namespace my_pos.Services
 {
-    public class ProductServices(AppDbContext dbContext, IHttpContextAccessor _contextAccessor, ILogger<ProductServices> _logger) : IProduct
+    public class ProductServices(AppDbContext dbContext, 
+        IHttpContextAccessor _contextAccessor,
+        ILogger<ProductServices> _logger) : IProduct
     {
         public async Task<Product> AddProductAsync(AddproductDTO addproductDTO)
         {
             var userId = _contextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            _logger.LogError($"Id is {userId}");
+            //_logger.LogError($"Id is {userId}");
             var existingproduct = await dbContext.products.FirstOrDefaultAsync(u => u.Name == addproductDTO.Name);
-            Console.WriteLine(existingproduct);
+            //Console.WriteLine(existingproduct);
             if (existingproduct != null)
             {
-                Console.WriteLine($"Product with name {addproductDTO.Name} exists");
+                //Console.WriteLine($"Product with name {addproductDTO.Name} exists");
                 
                 existingproduct.Count += addproductDTO.Count;
                 await dbContext.SaveChangesAsync();
@@ -39,6 +41,21 @@ namespace my_pos.Services
             return newproduct;
         }
 
+        public async Task<string> DeleteProduct(Guid Id)
+        {
+            var product = await dbContext.products.FindAsync(Id);
+
+            if (product is null)
+            {
+                return null;
+
+            }
+
+            dbContext.Remove(product);
+            await dbContext.SaveChangesAsync();
+            return "";
+        }
+
         public async Task<string> DeleteProductAsync(Guid Id)
         {
             var product = await dbContext.products.FirstOrDefaultAsync(p => p.Id == Id);
@@ -57,7 +74,7 @@ namespace my_pos.Services
 
         public async Task<List<Product>> GetAllProducts()
         {
-            return await dbContext.products.Where(p=>p.IsDeleted == true).ToListAsync();
+            return await dbContext.products.Where(p=>p.IsDeleted == false).ToListAsync();
         }
 
         public async Task<Product> GetProductById(Guid Id)
@@ -68,6 +85,25 @@ namespace my_pos.Services
                 return null;
             }
             return product;
+        }
+
+        public async Task<Product> UpdateProductAsync(Guid Id, AddproductDTO updateProductDTO)
+        {
+            var product = await dbContext.products.FindAsync(Id);
+            if (product is null)
+            {
+                return null;
+            }
+            var userId = _contextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            product.Name= updateProductDTO.Name;
+            product.price = updateProductDTO.Price;
+            product.Count= updateProductDTO.Count;
+            product.UpdatedBy = userId.ToString();
+
+            await dbContext.SaveChangesAsync();
+            return product;
+
         }
     }
 }

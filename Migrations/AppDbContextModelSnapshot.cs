@@ -45,6 +45,9 @@ namespace my_pos.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("text");
+
                     b.Property<double>("price")
                         .HasColumnType("double precision");
 

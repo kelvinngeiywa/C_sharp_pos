@@ -82,6 +82,27 @@ namespace my_pos.Controllers
 
             return Ok(response);
         }
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ResponseDTO>> UpdateProductAsync(Guid id,AddproductDTO updateProduct)
+        {
+            var results = await productServices.UpdateProductAsync(id, updateProduct);
+
+            if (results is null)
+            {
+                response.Success = false;
+                response.Message = "Product not found!!";
+                response.Data = results;
+
+                return BadRequest(response);
+            }
+
+            response.Success = true;
+            response.Message = "Product updated successfully!!!";
+            response.Data = results;
+
+            return Ok(response);
+        }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<ResponseDTO>> DeleteProductAsync(Guid id)
@@ -101,6 +122,28 @@ namespace my_pos.Controllers
             response.Message = "Product deleted successfully!!";
 
             return Ok(response);
+        }
+        [Authorize(Roles ="Admin")]
+        [HttpDelete("remove/{id}")]
+        public async Task<ActionResult<ResponseDTO>> RemoveProductAsync(Guid id)
+        {
+            var results = await productServices.DeleteProduct(id);
+
+            if (results is null)
+            {
+                response.Success = false;
+                response.Message = "Product not found!!";
+                response.Data = results;
+
+                return BadRequest(response);
+            }
+
+            response.Success = true;
+            response.Message = "Product deleted successfully!!";
+            response.Data = results;
+
+            return Ok(response);
+
         }
     }
 }

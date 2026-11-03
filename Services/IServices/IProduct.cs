@@ -8,6 +8,8 @@ namespace my_pos.Services.IServices
         Task<Product> AddProductAsync(AddproductDTO addproductDTO);
         Task<List<Product>> GetAllProducts();
         Task<Product> GetProductById(Guid Id);
+        Task<Product> UpdateProductAsync(Guid Id, AddproductDTO updateProductDTO);
         Task<string> DeleteProductAsync(Guid Id);
+        Task<string> DeleteProduct(Guid Id);
     }
 }
